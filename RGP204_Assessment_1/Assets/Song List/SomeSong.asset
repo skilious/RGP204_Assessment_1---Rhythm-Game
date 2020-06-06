@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdbe6816ef40154c9c506ea4586c23e, type: 3}
+  m_Name: SomeSong
+  m_EditorClassIdentifier: 
+  song: {fileID: 8300000, guid: b9f12eadaec6d79419010a6f20457904, type: 3}
+  bpm: 109
+  tracks:
+  - notes:
+    - note: 1
+      times: 2
+    - note: 2
+      times: 5
+    - note: 3
+      times: 2
+    - note: 4
+      times: 3
+    - note: 5
+      times: 6
+    - note: 6
+      times: 7
+    - note: 7
+      times: 0
+    - note: 8
+      times: 0
+    - note: 9
+      times: 0
+    - note: 10
+      times: 0
+    - note: 11
+      times: 0
+    - note: 12
+      times: 0
+    - note: 13
+      times: 0
+    - note: 14
+      times: 0
+    - note: 15
+      times: 0
+    - note: 16
+      times: 0
+    - note: 18
+      times: 0
+    - note: 20
+      times: 0
+    - note: 30
+      times: 0
+    - note: 31
+      times: 0
+    - note: 32
+      times: 0
+    - note: 33
+      times: 0
+    - note: 51
+      times: 0
+    - note: 55
+      times: 0
+    - note: 56
+      times: 0
+    - note: 57
+      times: 0
+    - note: 58
+      times: 0
+    - note: 69
+      times: 0
+    - note: 70
+      times: 0
+    - note: 71
+      times: 0

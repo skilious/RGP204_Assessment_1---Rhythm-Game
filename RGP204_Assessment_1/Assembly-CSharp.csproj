@@ -56,6 +56,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Music_Sync.cs" />
+     <Compile Include="Assets\Scripts\NoteNode.cs" />
+     <Compile Include="Assets\Scripts\NoteObjPool.cs" />
+     <Compile Include="Assets\Scripts\SongInfo.cs" />
+     <Compile Include="Assets\Scripts\SongInfoMessenger.cs" />
+     <Compile Include="Assets\Scripts\SongManager.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Unity/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -585,37 +590,37 @@
  <HintPath>C:/Unity/2019.3.15f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/Tai/Desktop/Game_projects/RGP204_Assessment_1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/Tai/Documents/RGP204_Assessment_1/RGP204_Assessment_1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

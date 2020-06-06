@@ -10,7 +10,7 @@ public class Music_Sync : MonoBehaviour
     float secPerBeat;
     float dspTimeSong;
 
-    float bpm;
+    float bpm = 190;
     void Start()
     {
         //calculate how many seconds is one beat
@@ -21,6 +21,10 @@ public class Music_Sync : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Calculate the position in seconds
+        songPosition = (float)(AudioSettings.dspTime - dspTimeSong);
+
+        //Calculate the position in beats
+        songPosInBeats = songPosition / secPerBeat;
     }
 }
