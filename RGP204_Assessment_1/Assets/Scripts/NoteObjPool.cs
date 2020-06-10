@@ -29,14 +29,14 @@ public class NoteObjPool: MonoBehaviour
         }
     }
 
-    public NoteNode GetNode(float startX, float endX, float posY, float posZ, float targetBeat, int times, float removeLineX)
+    public NoteNode GetNode(float startX, float startY, float endX, float endY, float posY, float posZ, float targetBeat, float removeLineX, bool reversed)
     {
         //check if there is an inactive instance
         foreach (NoteNode node in objList)
         {
             if (!node.gameObject.activeInHierarchy)
             {
-                node.Initalise(startX, endX, posY, posZ, targetBeat, times, removeLineX);
+                node.Initalise(startX, startY, endX, endY, posY, posZ, targetBeat, removeLineX, reversed);
                 node.gameObject.SetActive(true);
                 return node;
             }
@@ -44,10 +44,9 @@ public class NoteObjPool: MonoBehaviour
 
         //no inactive instances, instantiate a new GetComponent
         NoteNode NoteNode = ((GameObject)Instantiate(nodePrefab)).GetComponent<NoteNode>();
-        NoteNode.Initalise(startX, endX, posY, posZ, targetBeat, times, removeLineX);
+        NoteNode.Initalise(startX, startY, endX, endY, posY, posZ, targetBeat, removeLineX, reversed);
         objList.Add(NoteNode);
         return NoteNode;
 
     }
-
 }

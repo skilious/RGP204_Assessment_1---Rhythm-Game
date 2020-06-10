@@ -15,7 +15,6 @@ public class SongInfo : ScriptableObject
     public class Note
     {
         public float note;
-        public int times;
     }
 
     [System.Serializable]

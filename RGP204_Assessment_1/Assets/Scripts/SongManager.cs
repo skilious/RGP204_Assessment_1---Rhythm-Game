@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SongManager : MonoBehaviour
 {
+    public delegate void BeatOnHitAction(int trackNumber);
+    public static event BeatOnHitAction beatOnHitEvent;
+
     //the current position of the song (in seconds).
     public static float songPos;
 
@@ -20,18 +23,17 @@ public class SongManager : MonoBehaviour
 
     //total tracks
     private int len;
-    
+
     //index for each tracks
     private int[] trackNextIndices;
-    public GameObject notePrefab;
 
-    public float note;
     public AudioClip song;
     private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
 
     public int[] notes;
 
-    public float startLineX, finishLineX, removeLineX;
+    public float finishLineX, finishLineY, removeLineX;
+    public float[] startLineX, startLineY;
 
     public SongInfo songInfo;
 
@@ -42,8 +44,12 @@ public class SongManager : MonoBehaviour
 
     [Header("Spawn point")]
     public float[] trackSpawnPosY;
+
     public static float BeatsShownOnScreen = 1f;
 
+    public float offsetPerfect;
+    //Check if the note is actually reversed
+    public bool reversed;
     void Start()
     {
         audioSource.clip = song;
@@ -51,6 +57,7 @@ public class SongManager : MonoBehaviour
 
         //calculate how many seconds is one beat
         //we will see the declaration of bpm later
+        //60f - 1 minute
         secPerBeat = 60f / songInfo.bpm;
 
         //record the time when the song starts;
@@ -59,11 +66,13 @@ public class SongManager : MonoBehaviour
         //Get the audio to play.
         GetComponent<AudioSource>().Play();
 
+        //Grabs the lines that the notes are going to travel.
         len = trackSpawnPosY.Length;
+
         queueForTracks = new Queue<NoteNode>[len];
         previousNoteNodes = new NoteNode[len];
         trackNextIndices = new int[len];
-        for(int i = 0; i < len; i++)
+        for (int i = 0; i < len; i++)
         {
             trackNextIndices[i] = 0;
             queueForTracks[i] = new Queue<NoteNode>();
@@ -71,25 +80,64 @@ public class SongManager : MonoBehaviour
         }
         tracks = songInfo.tracks; //keep a refernce of the tracks
                                   //Check the length of the song.
+
+        InputManager.inputEvent += PlayerInputted;
     }
 
+    void PlayerInputted(int trackNumber)
+    {
+        Debug.Log(trackNumber);
+        if(previousNoteNodes[trackNumber] != null)
+        {
+            beatOnHitEvent?.Invoke(trackNumber);
+        }
+        else if(queueForTracks[trackNumber].Count != 0)
+        {
+            NoteNode frontNode = queueForTracks[trackNumber].Peek();
+
+            float offsetY = Mathf.Abs(frontNode.gameObject.transform.position.x - finishLineX);
+            if(offsetY < offsetPerfect)
+            {
+                Debug.Log("perfect!");
+                beatOnHitEvent?.Invoke(trackNumber);
+                queueForTracks[trackNumber].Dequeue();
+                frontNode.gameObject.SetActive(false);
+            }
+        }
+    }
     void Update()
     {
         //calculate the position in seconds.
         songPos = (float)(AudioSettings.dspTime - dspTimeSong);
-        Debug.Log("Song Position: " + songPos);
         //calculate the position in beats.
         float songPosInBeats = songPos / secPerBeat + BeatsShownOnScreen;
+
         for (int i = 0; i < len; i++)
         {
             int nextIndex = trackNextIndices[i];
             SongInfo.Track currTrack = tracks[i];
+            int randomizer, yRand;
+            if (Random.value < 0.5f)
+            {
+                randomizer = 0;
+            }
+            else
+                randomizer = 1;
 
+            yRand = Random.Range(0, 3);
             if (nextIndex < currTrack.notes.Length && currTrack.notes[nextIndex].note < songPosInBeats)
             {
                 SongInfo.Note currNote = currTrack.notes[nextIndex];
-
-                NoteNode noteNode = NoteObjPool.instance.GetNode(startLineX, finishLineX, trackSpawnPosY[i], 0, currNote.note, currNote.times, removeLineX);
+                if (randomizer == 1)
+                {
+                    Debug.Log("Reversed");
+                    reversed = true;
+                }
+                else if (randomizer == 0)
+                {
+                    reversed = false;
+                }
+                NoteNode noteNode = NoteObjPool.instance.GetNode(startLineX[randomizer], startLineY[yRand], finishLineX, finishLineY, trackSpawnPosY[i], 0, currNote.note, removeLineX, reversed);
                 queueForTracks[i].Enqueue(noteNode);
 
                 trackNextIndices[i]++;
